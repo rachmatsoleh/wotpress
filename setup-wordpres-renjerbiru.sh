@@ -13,12 +13,11 @@ RESET='\033[0m'
 echo -e "${GREEN}Memulai instalasi WordPress...${RESET}"
 
 # Instal paket yang diperlukan
-apt update && apt install -y apache2 php php-mysql mysql-server mariadb wget unzip
+apt update && apt install -y apache2 php php-mysql  mariadb-server wget 
 
 # Konfigurasi MySQL
 DB_NAME="wordpress_db"
-DB_USER="wordpress_user"
-DB_PASS="password123"
+DB_USER="wordpress_user"s
 
 mysql -e "CREATE DATABASE ${DB_NAME};"
 mysql -e "CREATE USER '${DB_USER}'@'localhost' IDENTIFIED BY '${DB_PASS}';"
