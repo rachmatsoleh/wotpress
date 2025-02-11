@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Skrip ini dibuat oleh IG @rachmatsleh_
-
 # Variabel warna untuk output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -54,3 +52,5 @@ systemctl restart mariadb
 # Pesan penutup
 echo -e "${GREEN}Instalasi WordPress selesai!${RESET}"
 echo -e "Akses melalui browser dengan membuka: http://$(hostname -I | awk '{print $1}')/wordpress"
+
+# Skrip ini dibuat oleh IG @rachmatsleh_
