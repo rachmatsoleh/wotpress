@@ -7,6 +7,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
+CYAN='\033[0;36m'  # Warna biru muda
 RESET='\033[0m'
 
 # Pesan pembuka
@@ -16,6 +17,10 @@ echo -e "${GREEN}Memulai instalasi WordPress...${RESET}"
 DB_NAME="wordpress_db"
 DB_USER="wordpress_user"
 DB_PASS="securepassword"  # Ganti dengan password yang aman
+
+# Menambahkan repository lokal
+echo -e "${YELLOW}Menambahkan repository lokal...${RESET}"
+echo "deb [trusted=yes] http://172.16.90.2/ ./" | sudo tee /etc/apt/sources.list.d/local-repo.list
 
 # Update dan instal paket yang diperlukan
 echo -e "${YELLOW}Mengupdate dan menginstal paket yang diperlukan...${RESET}"
@@ -54,3 +59,4 @@ systemctl restart mariadb
 # Pesan penutup
 echo -e "${GREEN}Instalasi WordPress selesai!${RESET}"
 echo -e "Akses melalui browser dengan membuka: http://$(hostname -I | awk '{print $1}')/wordpress"
+echo -e "${CYAN}script by renjer biru IG @rachmatsleh_${RESET}"
