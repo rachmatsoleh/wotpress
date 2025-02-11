@@ -20,7 +20,7 @@ DB_PASS="securepassword"  # Ganti dengan password yang aman
 
 # Menambahkan repository global Debian 11 (Bullseye)
 echo -e "${YELLOW}Menambahkan repository global Debian 11 (Bullseye)...${RESET}"
-cat <<EOF | sudo tee /etc/apt/sources.list
+cat <<EOF | tee /etc/apt/sources.list
 # Debian 11 Bullseye - Main Repository
 deb http://deb.debian.org/debian bullseye main contrib non-free
 deb-src http://deb.debian.org/debian bullseye main contrib non-free
