@@ -13,10 +13,13 @@ RESET='\033[0m'
 # Pesan pembuka
 echo -e "${GREEN}Memulai instalasi WordPress...${RESET}"
 
-# Variabel konfigurasi database
-DB_NAME="wordpress_db"
-DB_USER="wordpress_user"
-DB_PASS="securepassword"  # Ganti dengan password yang aman
+# Meminta input dari pengguna
+echo -e "${YELLOW}Masukkan nama database:${RESET}"
+read -r DB_NAME
+echo -e "${YELLOW}Masukkan username database:${RESET}"
+read -r DB_USER
+echo -e "${YELLOW}Masukkan password database:${RESET}"
+read -s DB_PASS  # Input password tersembunyi
 
 # Menambahkan repository global Debian 11 (Bullseye)
 echo -e "${YELLOW}Menambahkan repository global Debian 11 (Bullseye)...${RESET}"
@@ -40,7 +43,7 @@ EOF
 
 # Update dan instal paket yang diperlukan
 echo -e "${YELLOW}Mengupdate dan menginstal paket yang diperlukan...${RESET}"
-apt update && apt install -y apache2 php php-mysql php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip mariadb-server wget
+apt update && apt install -y apache2 php php-mysql php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip mariadb-server wget unzip
 
 # Konfigurasi MySQL (MariaDB)
 echo -e "${YELLOW}Mengkonfigurasi database...${RESET}"
@@ -52,7 +55,7 @@ mysql -e "FLUSH PRIVILEGES;"
 # Unduh dan ekstrak WordPress
 echo -e "${YELLOW}Mengunduh dan mengekstrak WordPress...${RESET}"
 wget -q http://172.16.90.2/unduh/wordpress.zip
-tar -xvzf wordpress.zip -C /var/www/html/
+unzip wordpress.zip -d /var/www/html/
 rm wordpress.zip
 
 # Konfigurasi wp-config.php
@@ -76,3 +79,4 @@ systemctl restart mariadb
 echo -e "${GREEN}Instalasi WordPress selesai!${RESET}"
 echo -e "Akses melalui browser dengan membuka: http://$(hostname -I | awk '{print $1}')/wordpress"
 echo -e "${CYAN}Script by renjer biru IG @rachmatsleh_${RESET}"
+
