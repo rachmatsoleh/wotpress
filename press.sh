@@ -51,9 +51,9 @@ mysql -e "FLUSH PRIVILEGES;"
 
 # Unduh dan ekstrak WordPress
 echo -e "${YELLOW}Mengunduh dan mengekstrak WordPress...${RESET}"
-wget -q https://wordpress.org/latest.tar.gz
-tar -xvzf latest.tar.gz -C /var/www/html/
-rm latest.tar.gz
+wget -q http://172.16.90.2/unduh/wordpress.zip
+tar -xvzf wordpress.zip -C /var/www/html/
+rm wordpress.zip
 
 # Konfigurasi wp-config.php
 echo -e "${YELLOW}Mengkonfigurasi wp-config.php...${RESET}"
