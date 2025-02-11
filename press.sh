@@ -76,7 +76,20 @@ systemctl restart apache2
 systemctl restart mariadb
 
 # Pesan penutup
+#!/bin/bash
+
+# Menampilkan gambar kucing dalam format ASCII
+echo " /\     /\\"
+echo "{  \`---'  }"
+echo "{  O   O  }"
+echo "~~>  V  <~~"
+echo " \ \|/ /"
+echo "  \`-----'____"
+echo "  /     \    \_"
+echo " {       }\  )_\\"
+echo " |  \_/  ) / /"
+echo "  \__/  /(_/"
+echo "    (__/"
 echo -e "${GREEN}Instalasi WordPress selesai!${RESET}"
 echo -e "Akses melalui browser dengan membuka: http://$(hostname -I | awk '{print $1}')/wordpress"
 echo -e "${CYAN}Script by renjer biru IG @rachmatsleh_${RESET}"
-
