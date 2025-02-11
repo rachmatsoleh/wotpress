@@ -18,9 +18,25 @@ DB_NAME="wordpress_db"
 DB_USER="wordpress_user"
 DB_PASS="securepassword"  # Ganti dengan password yang aman
 
-# Menambahkan repository lokal
-echo -e "${YELLOW}Menambahkan repository lokal...${RESET}"
-echo "deb [trusted=yes] http://172.16.90.2/ ./" | sudo tee /etc/apt/sources.list.d/local-repo.list
+# Menambahkan repository global Debian 11 (Bullseye)
+echo -e "${YELLOW}Menambahkan repository global Debian 11 (Bullseye)...${RESET}"
+cat <<EOF | sudo tee /etc/apt/sources.list
+# Debian 11 Bullseye - Main Repository
+deb http://deb.debian.org/debian bullseye main contrib non-free
+deb-src http://deb.debian.org/debian bullseye main contrib non-free
+
+# Debian 11 Bullseye - Security Updates
+deb http://security.debian.org/debian-security bullseye-security main contrib non-free
+deb-src http://security.debian.org/debian-security bullseye-security main contrib non-free
+
+# Debian 11 Bullseye - Updates
+deb http://deb.debian.org/debian bullseye-updates main contrib non-free
+deb-src http://deb.debian.org/debian bullseye-updates main contrib non-free
+
+# Debian 11 Bullseye - Backports (Optional)
+deb http://deb.debian.org/debian bullseye-backports main contrib non-free
+deb-src http://deb.debian.org/debian bullseye-backports main contrib non-free
+EOF
 
 # Update dan instal paket yang diperlukan
 echo -e "${YELLOW}Mengupdate dan menginstal paket yang diperlukan...${RESET}"
@@ -59,4 +75,4 @@ systemctl restart mariadb
 # Pesan penutup
 echo -e "${GREEN}Instalasi WordPress selesai!${RESET}"
 echo -e "Akses melalui browser dengan membuka: http://$(hostname -I | awk '{print $1}')/wordpress"
-echo -e "${CYAN}script by renjer biru IG @rachmatsleh_${RESET}"
+echo -e "${CYAN}Script by renjer biru IG @rachmatsleh_${RESET}"
